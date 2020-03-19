@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<div>
+    <form action="{{ path('home') }}" method="post">
+        <label for="postal">Code postal :</label><br>
+        <input type="text" id="postal" name="postal" required><br>
+        <label for="commune">Nom de la commune :</label><br>
+        <input type="text" id="commune" name="commune" required><br>
+        <input type="submit" value="Rechercher">
+    </form>
+</div>
+<div>
+    {% for etab in etablissement %}
+        {% if etab.properties.nom %}<p>Nom : {{ etab.properties.nom }}</p>{% endif %}
+        {% if etab.properties.codeInsee %}<p>Code INSEE : {{ etab.properties.codeInsee }}</p>{% endif %}
+        {% if etab.properties.email %}<p>Email : {{ etab.properties.email }}</p>{% endif %}
+        {% if etab.properties.telephone %}<p>Téléphone : {{ etab.properties.telephone }}</p>{% endif %}
+    {% endfor %}
+</div>
+<div>
+</div>
+{% endblock %}
