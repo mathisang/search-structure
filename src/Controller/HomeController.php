@@ -24,10 +24,9 @@ class HomeController extends AbstractController
         if ($postal && $commune) {
             $resultCommune = $geoApi->getCommune($postal, $commune);
             if ($resultCommune) {
-                echo "OK<br>";
                 $resultPublics = $publicsApi->getEtablissementsPublics($resultCommune);
             } else {
-                echo "RIEN<br>";
+                echo "<p style='color: red'>Aucun résultat trouver dans la base de donnée.</p><br>";
             }
         }
 
